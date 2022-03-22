@@ -21,3 +21,5 @@ def test_convert(client: YConverter):
 
     with raises(ValueError):
         result3 = client.convert(1, "US", "TRY")
+
+    assert client.convert(1550000, "try", "usd")
