@@ -2,6 +2,8 @@
 
 All fiat currency and crypto converter
 
+- Type console: `convert 1 usd try` to test it
+
 ## ⬇️  Installation
 
 - Recommended installation is `pip` install
