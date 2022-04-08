@@ -2,6 +2,7 @@ from dataclasses import dataclass, field
 from os import environ
 from pathlib import Path
 from time import time
+from typing import Dict
 
 from ruamel.yaml import YAML, yaml_object
 
@@ -35,7 +36,7 @@ class Cache:
     PATH = Path(f"{environ['HOME']}/yconverter.yml")
 
     api_key: str = field(default="")
-    price_info: dict[str, PriceInfo] = field(default_factory=dict)
+    price_info: Dict[str, PriceInfo] = field(default_factory=dict)
 
     @classmethod
     def load(cls):
