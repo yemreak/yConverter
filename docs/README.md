@@ -2,12 +2,9 @@
 
 All fiat currency and crypto converter
 
-- Type terminal: `convert 1 usd try` to test it
-- For Alfred 4: `cc 1 usd try` to test it ([⤵️ Download latest `*.workplace` from release](https://github.com/yedhrab/YConverter/releases))
-- ⚠️ Complex queries like `2 TRY PHP` is not working yet!
-
-![5usdtryalfred](./images/5usdttry.png)
-![1000tryusd](./images/1000tryusd.png)
+- 💚 Type terminal: `convert 1 usd try` to test it
+- 🎓 For Alfred 4 ➡️ [YConverterAlfred](https://github.com/yedhrab/YConverterAlfred)
+- 🎉 Complex queries like `2 TRY PHP` is working now!
 
 ## ⬇️  Installation
 
