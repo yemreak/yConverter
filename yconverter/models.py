@@ -42,15 +42,18 @@ class Cache:
         return yaml.load(Cache.PATH) if (Cache.PATH.exists() and Cache.PATH.read_text() != "") else cls()
 
     def is_cached(self, pair: str) -> bool:
+        pair = pair.upper()
         return pair in self.price_info and not self.price_info[pair].is_outdated()
 
     def is_fiat(self, pair: str) -> bool:
+        pair = pair.upper()
         return pair in self.price_info and not self.price_info[pair].is_crypto
 
     def is_fiat_symbol(self, symbol: str) -> bool:
         return f"USD{symbol.upper()}" in self.price_info
 
     def is_crypto(self, pair: str) -> bool:
+        pair = pair.upper()
         return pair in self.price_info and self.price_info[pair].is_crypto
 
     def cache(self, pair: str, value: float, is_crypto: bool):
