@@ -3,8 +3,8 @@ from os.path import basename, splitext
 
 from setuptools import find_packages, setup
 
-VERSION = "1.0.0b"
-README_PATH = "README.md"
+VERSION = "1.0.2b"
+README_PATH = "docs/README.md"
 
 # test_requirements = ["behave", "behave-classy", "pytest"]
 

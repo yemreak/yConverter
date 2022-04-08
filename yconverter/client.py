@@ -12,7 +12,7 @@ class YConverter:
     _session: Session
 
     def __init__(self, api_key: str = "") -> None:
-        self._cache = Cache.from_file()
+        self._cache = Cache.load()
         self._session = Session()
         if api_key:
             self._cache.api_key = api_key
@@ -41,7 +41,7 @@ class YConverter:
             if self._cache.is_fiat(pair):
                 self._fetch_fiat_currencies()
                 self._cache.save()
-                return self._cache.price_info[pair].value
+                return self._cache.get_price(pair)
             if self._cache.is_crypto(pair):
                 self._fetch_crypto_currencies()
                 self._cache.save()
@@ -49,16 +49,26 @@ class YConverter:
             raise RuntimeError(f"{source} {destination} is not FIAT nor Crypto but it's cached.")
 
         pair = f"{source}{destination}".upper()
-        if pair in self._cache.price_info:
-            if not self._cache.price_info[pair].is_outdated():
+        if self._cache.contains(pair):
+            if not self._cache.is_outdated(pair):
                 return amount * self._cache.get_price(pair)
             else:
                 return amount * load_price(pair)
         else:
             pair = f"{destination}{source}".upper()
-            if pair in self._cache.price_info:
-                if not self._cache.price_info[pair].is_outdated():
+            if self._cache.contains(pair):
+                if not self._cache.is_outdated(pair):
                     return amount / self._cache.get_price(pair)
                 else:
                     return amount / load_price(pair)
+
+        if self._cache.is_fiat_symbol(source) and self._cache.is_fiat_symbol(destination):
+            prices: list[float] = []
+            for pair in [f"USD{source}", f"USD{destination}"]:
+                if not self._cache.is_outdated(pair):
+                    prices.append(self._cache.get_price(pair))
+                else:
+                    prices.append(load_price(pair))
+            return amount * prices[1] / prices[0]
+
         raise ValueError(f"{source} {destination} can't found in Fiat and Binance currencies")

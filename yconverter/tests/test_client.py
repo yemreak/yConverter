@@ -31,7 +31,11 @@ def test_convert(client: YConverter):
     result2 = client.convert(1, "btc", "try")
     assert round(result1, 8) == round(1 / result2, 8)
 
+    result1 = client.convert(1, "eur", "try")
+    result2 = client.convert(1, "try", "eur")
+    assert round(result1, 8) == round(1 / result2, 8)
+
     with raises(ValueError):
-        result3 = client.convert(1, "US", "TRY")
+        client.convert(1, "US", "TRY")
 
     assert client.convert(1550000, "try", "usd")
