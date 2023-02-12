@@ -12,9 +12,8 @@ yaml = YAML()
 @yaml_object(yaml)
 @dataclass
 class PriceInfo:
-
     FIAT_CACHE_TIME = 10 * 60
-    CRPYTO_CACHE_TIME = 1 * 60
+    CRPYTO_CACHE_TIME = 10
 
     value: float
     is_crypto: bool
@@ -25,22 +24,27 @@ class PriceInfo:
         self.timestamp = time()
 
     def is_outdated(self) -> bool:
-        cache_time = PriceInfo.FIAT_CACHE_TIME if self.is_crypto else PriceInfo.CRPYTO_CACHE_TIME
+        cache_time = (
+            PriceInfo.FIAT_CACHE_TIME if self.is_crypto else PriceInfo.CRPYTO_CACHE_TIME
+        )
         return time() - self.timestamp > cache_time
 
 
 @yaml_object(yaml)
 @dataclass
 class Cache:
-
     PATH = Path(f"{environ['HOME']}/yconverter.yml")
 
     api_key: str = field(default="")
     price_info: Dict[str, PriceInfo] = field(default_factory=dict)
 
     @classmethod
-    def load(cls):
-        return yaml.load(Cache.PATH) if (Cache.PATH.exists() and Cache.PATH.read_text() != "") else cls()
+    def load(cls) -> "Cache":
+        return (
+            yaml.load(Cache.PATH)
+            if (Cache.PATH.exists() and Cache.PATH.read_text() != "")
+            else cls()
+        )
 
     def is_cached(self, pair: str) -> bool:
         pair = pair.upper()

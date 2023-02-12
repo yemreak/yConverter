@@ -6,8 +6,12 @@ from .client import YConverter
 
 def main():
     parser = ArgumentParser(description="All fiat currency and crypto converter")
-    parser.add_argument("arguments", nargs="+", help="Amount source destination (1 usd try)")
-    parser.add_argument("-k", "--key", help="Free api key for https://openexchangerates.org/signup/free")
+    parser.add_argument(
+        "arguments", nargs="+", help="Amount source destination (1 usd try)"
+    )
+    parser.add_argument(
+        "-k", "--key", help="Free api key for https://openexchangerates.org/signup/free"
+    )
 
     args = parser.parse_args()
     arguments = args.arguments

@@ -3,7 +3,7 @@ from os.path import basename, splitext
 
 from setuptools import find_packages, setup
 
-VERSION = "1.0.1"
+VERSION = "1.0.2"
 README_PATH = "docs/README.md"
 
 # test_requirements = ["behave", "behave-classy", "pytest"]
@@ -46,7 +46,12 @@ setup(
         "Issue Tracker": "https://github.com/yedhrab/YConverter/issues",
     },
     keywords=[
-        "cryptocurrencyconverter", "currencyconverter", "converter", "currecies", "crpytocurrencies", "cryptoconverter"
+        "cryptocurrencyconverter",
+        "currencyconverter",
+        "converter",
+        "currecies",
+        "crpytocurrencies",
+        "cryptoconverter",
     ],
     python_requires=">=3.10",
     install_requires=["ruamel.yaml==0.17.21", "requests==2.27.1"],

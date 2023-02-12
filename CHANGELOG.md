@@ -1,5 +1,7 @@
 # 📋 Changelog
 
+- Please use [release](https://github.com/yedhrab/yconverter/releases) section
+
 # ⚗️ 1.0.0b
 
 - Type console: `convert 1 usd try` to test it

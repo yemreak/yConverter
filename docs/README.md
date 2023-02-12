@@ -35,7 +35,7 @@ pip install yconverter
 ## 🗄 Cache System
 
 - All data is stored in `$HOME/yconverter.yml`
-- All cached pair value are refreshed every **10 mins** for fiat, **1 min** for crypto
+- All cached pair value are refreshed every **10 mins** for fiat, **10 sec** for crypto
 
 ## 🪪  License
 
