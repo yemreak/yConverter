@@ -3,7 +3,7 @@ from os.path import basename, splitext
 
 from setuptools import find_packages, setup
 
-VERSION = "1.0.2"
+VERSION = "1.0.3"
 README_PATH = "docs/README.md"
 
 # test_requirements = ["behave", "behave-classy", "pytest"]
@@ -36,6 +36,7 @@ setup(
         "Operating System :: Unix",
         "Operating System :: Microsoft :: Windows",
         "Programming Language :: Python",
+        "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: Implementation :: CPython",
         "Programming Language :: Python :: Implementation :: PyPy",
@@ -53,7 +54,7 @@ setup(
         "crpytocurrencies",
         "cryptoconverter",
     ],
-    python_requires=">=3.10",
-    install_requires=["ruamel.yaml==0.17.21", "requests==2.27.1"],
+    python_requires=">=3.9",
+    install_requires=["ruamel.yaml==0.17.21", "requests==2.28.2"],
     entry_points={"console_scripts": ["convert = yconverter.cli:main"]},
 )
