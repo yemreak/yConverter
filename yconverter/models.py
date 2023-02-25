@@ -33,7 +33,7 @@ class PriceInfo:
 @yaml_object(yaml)
 @dataclass
 class Cache:
-    PATH = Path(f"{environ['HOME']}/yconverter.yml")
+    PATH = Path.home() / "yconverter.yml"
 
     api_key: str = field(default="")
     price_info: Dict[str, PriceInfo] = field(default_factory=dict)
