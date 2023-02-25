@@ -3,7 +3,7 @@ from os.path import basename, splitext
 
 from setuptools import find_packages, setup
 
-VERSION = "1.0.4"
+VERSION = "1.0.5"
 README_PATH = "docs/README.md"
 
 # test_requirements = ["behave", "behave-classy", "pytest"]
@@ -21,7 +21,7 @@ setup(
     long_description_content_type="text/markdown",
     author="Yunus Emre Ak",
     author_email="yemreak.com@gmail.com",
-    url="https://github.com/yedhrab/YConverter",
+    url="https://github.com/yedhrab/yConverter",
     packages=find_packages(),
     py_modules=[splitext(basename(path))[0] for path in glob("*.py")],
     include_package_data=True,
