@@ -11,7 +11,7 @@ yaml = YAML()
 @yaml_object(yaml)
 @dataclass
 class PriceInfo:
-    FIAT_CACHE_TIME = 10 * 60
+    FIAT_CACHE_TIME = 60 * 60
     CRPYTO_CACHE_TIME = 10
 
     value: float
