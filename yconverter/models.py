@@ -1,5 +1,4 @@
 from dataclasses import dataclass, field
-from os import environ
 from pathlib import Path
 from time import time
 from typing import Dict
