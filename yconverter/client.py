@@ -1,6 +1,6 @@
 from requests import Session
 
-from .models import Cache
+from .models import Cache, PriceInfo
 
 
 class YConverter:
@@ -10,7 +10,12 @@ class YConverter:
     _cache: Cache
     _session: Session
 
-    def __init__(self, api_key: str = "") -> None:
+    def __init__(
+        self,
+        api_key: str = "",
+        fiat_cache_time: float | None = None,
+        crypto_cache_time: float | None = None,
+    ) -> None:
         self._cache = Cache.load()
         self._session = Session()
         if api_key:
@@ -18,6 +23,11 @@ class YConverter:
         assert (
             self._cache.api_key
         ), "Get free API key from: https://openexchangerates.org/signup/free"
+
+        if fiat_cache_time:
+            PriceInfo.FIAT_CACHE_TIME = fiat_cache_time
+        if crypto_cache_time:
+            PriceInfo.CRPYTO_CACHE_TIME = crypto_cache_time
 
         if not self._cache.price_info:
             self.fetch_currencies()

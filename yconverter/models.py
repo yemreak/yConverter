@@ -11,13 +11,13 @@ yaml = YAML()
 @yaml_object(yaml)
 @dataclass
 class PriceInfo:
-    FIAT_CACHE_TIME = 60 * 60
-    CRPYTO_CACHE_TIME = 10
-
     value: float
     is_crypto: bool
 
     timestamp: float = field(init=False)
+
+    FIAT_CACHE_TIME: float = 60 * 60
+    CRPYTO_CACHE_TIME: float = 10
 
     def __post_init__(self):
         self.timestamp = time()
